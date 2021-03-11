@@ -1,0 +1,24 @@
+{
+  "name": "PicFixer Movie Catalog",
+  "skillname": "skill-picfixer",
+  "authorname": "JarbasSkills",
+  "foldername": "",
+  "url": "https://github.com/JarbasSkills/skill-picfixer",
+  "branch": "v0.1",
+  "desktopFile": false,
+  "warning": "",
+  "systemDeps": false,
+  "platforms": [
+    "arm",
+    "arm64",
+    "i386",
+    "x86_64",
+    "ia64"
+  ],
+  "examples": [
+    "open pic fixer",
+    "play public domain movie"g,
+    "play old movie",
+    "play pic fixer"
+  ]
+}
