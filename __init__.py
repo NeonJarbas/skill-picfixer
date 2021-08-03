@@ -1,6 +1,6 @@
 from pyvod import Collection, Media
 from os.path import join, dirname, basename
-from ovos_workshop.frameworks.cps import CPSMatchType, CPSPlayback, \
+from ovos_workshop.frameworks.playback import CPSMatchType, CPSPlayback, \
     CPSMatchConfidence
 from ovos_workshop.skills.video_collection import VideoCollectionSkill
 from mycroft.skills.core import intent_file_handler
