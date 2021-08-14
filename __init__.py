@@ -1,7 +1,7 @@
 from pyvod import Collection, Media
 from os.path import join, dirname, basename
-from ovos_workshop.frameworks.playback import CPSMatchType, CPSPlayback, \
-    CPSMatchConfidence
+from ovos_workshop.frameworks.playback import CommonPlayMediaType, CommonPlayPlaybackType, \
+    CommonPlayMatchConfidence
 from ovos_workshop.skills.video_collection import VideoCollectionSkill
 from mycroft.skills.core import intent_file_handler
 
@@ -10,9 +10,9 @@ class PicFixerSkill(VideoCollectionSkill):
 
     def __init__(self):
         super().__init__("PicFixer")
-        self.supported_media = [CPSMatchType.GENERIC,
-                                CPSMatchType.MOVIE,
-                                CPSMatchType.VIDEO]
+        self.supported_media = [CommonPlayMediaType.GENERIC,
+                                CommonPlayMediaType.MOVIE,
+                                CommonPlayMediaType.VIDEO]
         self.message_namespace = basename(dirname(__file__)) + ".jarbasskills"
         # load video catalog
         path = join(dirname(__file__), "res", "feature_films_picfixer.jsondb")
@@ -22,8 +22,8 @@ class PicFixerSkill(VideoCollectionSkill):
         self.skill_logo = join(dirname(__file__), "ui", "picfixer.png")
         self.skill_icon = join(dirname(__file__), "ui", "picfixer.png")
         self.default_bg = logo
-        self.media_type = CPSMatchType.MOVIE
-        self.playback_type = CPSPlayback.GUI
+        self.media_type = CommonPlayMediaType.MOVIE
+        self.playback_type = CommonPlayPlaybackType.GUI
 
     # voice interaction
     def get_intro_message(self):
@@ -50,10 +50,10 @@ class PicFixerSkill(VideoCollectionSkill):
 
     def match_media_type(self, phrase, media_type):
         score = 0
-        if self.voc_match(phrase, "video") or media_type == CPSMatchType.VIDEO:
+        if self.voc_match(phrase, "video") or media_type == CommonPlayMediaType.VIDEO:
             score += 5
 
-        if self.voc_match(phrase, "movie") or media_type == CPSMatchType.MOVIE:
+        if self.voc_match(phrase, "movie") or media_type == CommonPlayMediaType.MOVIE:
             score += 10
 
         if self.voc_match(phrase, "old"):
