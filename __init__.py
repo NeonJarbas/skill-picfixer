@@ -23,7 +23,7 @@ class PicFixerSkill(VideoCollectionSkill):
         self.skill_icon = join(dirname(__file__), "ui", "picfixer.png")
         self.default_bg = logo
         self.media_type = CommonPlayMediaType.MOVIE
-        self.playback_type = CommonPlayPlaybackType.GUI
+        self.playback_type = CommonPlayPlaybackType.VIDEO
 
     # voice interaction
     def get_intro_message(self):
