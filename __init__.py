@@ -10,9 +10,7 @@ class PicFixerSkill(VideoCollectionSkill):
 
     def __init__(self):
         super().__init__("PicFixer")
-        self.supported_media = [CommonPlayMediaType.GENERIC,
-                                CommonPlayMediaType.MOVIE,
-                                CommonPlayMediaType.VIDEO]
+        self.supported_media = [CommonPlayMediaType.MOVIE]
         self.message_namespace = basename(dirname(__file__)) + ".jarbasskills"
         # load video catalog
         path = join(dirname(__file__), "res", "feature_films_picfixer.jsondb")
