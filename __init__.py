@@ -1,8 +1,9 @@
-from pyvod import Collection, Media
 from os.path import join, dirname, basename
-from ovos_plugin_common_play.ocp import MediaType, PlaybackType, MatchConfidence
-from ovos_workshop.skills.video_collection import VideoCollectionSkill
+
 from mycroft.skills.core import intent_file_handler
+from ovos_plugin_common_play.ocp import MediaType, PlaybackType
+from ovos_workshop.skills.video_collection import VideoCollectionSkill
+from pyvod import Collection
 
 
 class PicFixerSkill(VideoCollectionSkill):
@@ -14,7 +15,8 @@ class PicFixerSkill(VideoCollectionSkill):
         # load video catalog
         path = join(dirname(__file__), "res", "feature_films_picfixer.jsondb")
         logo = join(dirname(__file__), "res", "picfixer.png")
-        self.media_collection = Collection("feature_films_picfixer", logo=logo, db_path=path)
+        self.media_collection = Collection("feature_films_picfixer", logo=logo,
+                                           db_path=path)
         self.default_image = join(dirname(__file__), "ui", "picfixer.png")
         self.skill_logo = join(dirname(__file__), "ui", "picfixer.png")
         self.skill_icon = join(dirname(__file__), "ui", "picfixer.png")
@@ -43,7 +45,8 @@ class PicFixerSkill(VideoCollectionSkill):
         title = title.replace("|", "").replace('"', "") \
             .replace(':', "").replace('”', "").replace('“', "") \
             .strip()
-        return " ".join([w for w in title.split(" ") if w])  # remove extra spaces
+        return " ".join(
+            [w for w in title.split(" ") if w])  # remove extra spaces
 
     def match_media_type(self, phrase, media_type):
         score = 0
@@ -67,4 +70,3 @@ class PicFixerSkill(VideoCollectionSkill):
 
 def create_skill():
     return PicFixerSkill()
-
