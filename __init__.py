@@ -33,8 +33,18 @@ class PicFixerSkill(OVOSCommonPlaybackSkill):
             if "documentaries" in [_.lower() for _ in data["tags"]]:
                 t = t
                 docus.append(t)
-            elif data.get("sound") in ["silent", "Silent, No Music"]:
+                if ":" in t:
+                    t1, t2 = t.split(":", 1)
+                    docus.append(t1.strip())
+                    docus.append(t2.strip())
+            elif data.get("sound") in ["silent", "Silent, No Music"] or \
+                    any(a in data["collection"] for a in ["silent_films"]) or \
+                    any(a in data["tags"] for a in ["Silent", " silent", "silent"]):
                 silent_movies.append(t)
+                if ":" in t:
+                    t1, t2 = t.split(":", 1)
+                    silent_movies.append(t1.strip())
+                    silent_movies.append(t2.strip())
             elif data.get("color") in ["b&w", "black & white", "black and white", "B&W"]:
                 bw_movies.append(t)
                 if ":" in t:
@@ -82,7 +92,6 @@ class PicFixerSkill(OVOSCommonPlaybackSkill):
 
         title = entities.get("movie_name")
         bw_title = entities.get("bw_movie_name")
-        print(bw_title)
         s_title = entities.get("silent_movie_name")
         skill = "movie_streaming_provider" in entities  # skill matched
 
@@ -115,7 +124,7 @@ class PicFixerSkill(OVOSCommonPlaybackSkill):
                     "playback": PlaybackType.VIDEO,
                     "skill_icon": self.skill_icon,
                     "skill_id": self.skill_id,
-                    "image": self.default_image
+                    "image": video["images"][0] if video["images"] else self.default_image
                 }
 
         if skill:
