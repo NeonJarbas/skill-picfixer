@@ -82,7 +82,7 @@ class PicFixerSkill(OVOSCommonPlaybackSkill):
             "skill_icon": self.skill_icon,
             "image": self.default_image,
             "title": "Picfixer Feature Film Collection (Movie Playlist)",
-            "author": "PicFixer"
+            "author": "Internet Archive"
         }
 
     @ocp_search()
