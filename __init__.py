@@ -15,9 +15,9 @@ class PicFixerSkill(OVOSCommonPlaybackSkill):
         logo = join(dirname(__file__), "res", "picfixer.png")
         self.archive = {v["streams"][0]: v for v in JsonStorage(path)["feature_films_picfixer"] if v["streams"]}
 
-        self.default_image = join(dirname(__file__), "ui", "picfixer.png")
-        self.skill_logo = join(dirname(__file__), "ui", "picfixer.png")
-        self.skill_icon = join(dirname(__file__), "ui", "picfixer.png")
+        self.default_image = join(dirname(__file__), "res", "picfixer.png")
+        self.skill_logo = join(dirname(__file__), "res", "picfixer.png")
+        self.skill_icon = join(dirname(__file__), "res", "picfixer.png")
         self.default_bg = logo
         super().__init__(*args, **kwargs)
         self.load_ocp_keywords()
@@ -150,4 +150,4 @@ if __name__ == "__main__":
     s = PicFixerSkill(bus=FakeBus(), skill_id="t.fake")
     for r in s.search_db("play TEENAGE ZOMBIES", MediaType.BLACK_WHITE_MOVIE):
         print(r)
-        # {'title': 'TEENAGE ZOMBIES video quality upgrade', 'match_confidence': 55, 'media_type': <MediaType.BLACK_WHITE_MOVIE: 20>, 'uri': 'https://archive.org/download/TeenageZombiesVideoQualityUpgrade/TeenageZombiesVideoQualityUpgrade.ogv', 'playback': <PlaybackType.VIDEO: 1>, 'skill_icon': 'https://github.com/OpenVoiceOS/ovos-ocp-audio-plugin/raw/master/ovos_plugin_common_play/ocp/res/ui/images/ocp.png', 'skill_id': 't.fake', 'image': '/home/miro/PycharmProjects/OCP_sprint/skills/skill-picfixer/ui/picfixer.png'}
+        # {'title': 'TEENAGE ZOMBIES video quality upgrade', 'match_confidence': 55, 'media_type': <MediaType.BLACK_WHITE_MOVIE: 20>, 'uri': 'https://archive.org/download/TeenageZombiesVideoQualityUpgrade/TeenageZombiesVideoQualityUpgrade.ogv', 'playback': <PlaybackType.VIDEO: 1>, 'skill_icon': 'https://github.com/OpenVoiceOS/ovos-ocp-audio-plugin/raw/master/ovos_plugin_common_play/ocp/res/ui/images/ocp.png', 'skill_id': 't.fake', 'image': '/home/miro/PycharmProjects/OCP_sprint/skills/skill-picfixer/res/picfixer.png'}
